@@ -64,7 +64,7 @@
             background: radial-gradient(circle, #ffcc00, #ff6600);
             border-radius: 50%;
             position: relative;
-            animation: rotate 3s infinite linear, pulse 0.3s infinite alternate;
+            animation: rotate 0.5s infinite linear, pulse 0.3s infinite alternate;
             box-shadow: 0 0 50px #ffcc00;
         }
         
@@ -81,7 +81,7 @@
         .ram {
             font-size: 100px;
             animation: 
-                rotateRam 2s infinite linear,
+                rotateRam 0.3s infinite linear,
                 jump 0.2s infinite ease-in-out,
                 colorChange 0.2s infinite alternate;
             filter: drop-shadow(0 0 20px rgba(255,255,255,0.7));
@@ -259,6 +259,119 @@
             80% { color: #ff00ff; }
             100% { color: #00ffff; }
         }
+
+        /* Стили для казино */
+        .casino-section {
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+            border: 3px solid gold;
+            animation: casinoGlow 0.5s infinite alternate;
+        }
+
+        @keyframes casinoGlow {
+            from { box-shadow: 0 0 30px gold; }
+            to { box-shadow: 0 0 60px red, 0 0 90px yellow; }
+        }
+
+        .slot-machine {
+            background: linear-gradient(45deg, #8B0000, #B22222);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+            border: 2px solid #FFD700;
+        }
+
+        .slot-reels {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .reel {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border: 3px solid #000;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            animation: reelSpin 0.1s infinite;
+        }
+
+        @keyframes reelSpin {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100px); }
+        }
+
+        .slot-controls {
+            margin: 20px 0;
+        }
+
+        .spin-button {
+            background: linear-gradient(45deg, #FF0000, #FF8C00);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            animation: buttonPulse 0.3s infinite alternate;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        @keyframes buttonPulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .spin-button:hover {
+            background: linear-gradient(45deg, #00FF00, #00FF7F);
+            animation: none;
+            transform: scale(1.2);
+        }
+
+        .jackpot {
+            font-size: 32px;
+            color: gold;
+            animation: jackpotGlow 0.2s infinite alternate;
+            margin: 20px 0;
+        }
+
+        @keyframes jackpotGlow {
+            from { text-shadow: 0 0 10px gold; }
+            to { text-shadow: 0 0 30px red, 0 0 50px yellow; }
+        }
+
+        .coins-display {
+            font-size: 24px;
+            color: #FFD700;
+            margin: 15px 0;
+        }
+
+        .win-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent, gold);
+            animation: winFlash 0.1s infinite;
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        @keyframes winFlash {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 0.7; }
+        }
     </style>
 </head>
 <body>
@@ -347,6 +460,48 @@
                 <p>"В ритме барана и свастики - еби коран"</p>
             </div>
         </div>
+
+        <!-- ЛЮТЫЙ КАЗИК -->
+        <div class="casino-section">
+            <h2>🎰 ЛЮТЫЙ КАЗИК АЛАХАКБАРА 🎰</h2>
+            <div class="jackpot">ДЖЕКПОТ: 1.000.000$ СПЕРМЫ</div>
+            
+            <div class="slot-machine">
+                <div class="coins-display">💰 Бабосики: <span id="coins">1000</span></div>
+                
+                <div class="slot-reels">
+                    <div class="reel" id="reel1">🍆</div>
+                    <div class="reel" id="reel2">💦</div>
+                    <div class="reel" id="reel3">🍑</div>
+                    <div class="reel" id="reel4">🔥</div>
+                    <div class="reel" id="reel5">⚡</div>
+                </div>
+                
+                <div class="slot-controls">
+                    <button class="spin-button" onclick="spinSlots()">КРУТИТЬ ЗА СПЕРМУ!</button>
+                </div>
+                
+                <div id="result" style="font-size: 24px; margin: 15px 0; min-height: 40px;"></div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <h3>🎯 Ставки казика:</h3>
+                <div class="friends-section">
+                    <div class="friend-card">
+                        <h3>🍆 x5 = 500$</h3>
+                        <p>Мощный выигрыш</p>
+                    </div>
+                    <div class="friend-card">
+                        <h3>💦 x3 = 200$</h3>
+                        <p>Жидкая удача</p>
+                    </div>
+                    <div class="friend-card">
+                        <h3>🍑 x2 = 100$</h3>
+                        <p>Мягкий приз</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         
         <div class="footer">
             <p>«Истина в сердце, а ХУЙ в руках» — iOS Пушкин</p>
@@ -408,6 +563,97 @@
                 }, 10);
             });
         });
+
+        // ЛОГИКА КАЗИНО
+        const symbols = ['🍆', '💦', '🍑', '🔥', '⚡', '⭐', '🎯', '💎'];
+        let coins = 1000;
+        let isSpinning = false;
+
+        function spinSlots() {
+            if (isSpinning) return;
+            if (coins < 50) {
+                document.getElementById('result').innerHTML = "❌ НЕТ БАБОСИКОВ! ИДИ РАБОТАЙ!";
+                return;
+            }
+
+            isSpinning = true;
+            coins -= 50;
+            document.getElementById('coins').textContent = coins;
+            document.getElementById('result').innerHTML = "🎰 КРУТИМСЯ...";
+
+            const reels = [
+                document.getElementById('reel1'),
+                document.getElementById('reel2'),
+                document.getElementById('reel3'),
+                document.getElementById('reel4'),
+                document.getElementById('reel5')
+            ];
+
+            // Анимация вращения
+            let spinCount = 0;
+            const spinInterval = setInterval(() => {
+                reels.forEach(reel => {
+                    reel.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                });
+                spinCount++;
+                
+                if (spinCount > 20) {
+                    clearInterval(spinInterval);
+                    showResult(reels);
+                }
+            }, 50);
+        }
+
+        function showResult(reels) {
+            const results = reels.map(reel => reel.textContent);
+            
+            // Проверка выигрышных комбинаций
+            let winAmount = 0;
+            let winMessage = "";
+
+            // Проверяем одинаковые символы
+            const counts = {};
+            results.forEach(symbol => {
+                counts[symbol] = (counts[symbol] || 0) + 1;
+            });
+
+            // Выигрышные комбинации
+            if (counts['🍆'] >= 3) {
+                winAmount = counts['🍆'] * 100;
+                winMessage = `🎉 ВЫИГРЫШ ${winAmount}$ ЗА МОЩНЫЕ БАКЛАЖАНЫ!`;
+            } else if (counts['💦'] >= 3) {
+                winAmount = counts['💦'] * 80;
+                winMessage = `💦 ЖИДКИЙ ВЫИГРЫШ ${winAmount}$!`;
+            } else if (counts['💎'] >= 2) {
+                winAmount = counts['💎'] * 200;
+                winMessage = `💎 АЛМАЗНЫЙ ДЖЕКПОТ ${winAmount}$!`;
+            } else if (counts['🎯'] >= 2) {
+                winAmount = counts['🎯'] * 150;
+                winMessage = `🎯 ТОЧНЫЙ ВЫИГРЫШ ${winAmount}$!`;
+            } else if (new Set(results).size === 5) {
+                winAmount = 500;
+                winMessage = `🌈 ВСЕ РАЗНЫЕ! МЕГАВЫИГРЫШ ${winAmount}$!`;
+            }
+
+            if (winAmount > 0) {
+                coins += winAmount;
+                document.getElementById('coins').textContent = coins;
+                document.getElementById('result').innerHTML = winMessage;
+                
+                // Эффект выигрыша
+                const winFlash = document.createElement('div');
+                winFlash.className = 'win-animation';
+                document.body.appendChild(winFlash);
+                
+                setTimeout(() => {
+                    document.body.removeChild(winFlash);
+                }, 1000);
+            } else {
+                document.getElementById('result').innerHTML = "💸 ПРОИГРЫШ! ПРОДОЛЖАЙ КРУТИТЬ!";
+            }
+
+            isSpinning = false;
+        }
     </script>
 </body>
 </html>
